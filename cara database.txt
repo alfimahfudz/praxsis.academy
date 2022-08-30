@@ -1,0 +1,101 @@
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Password for user postgres:
+psql (14.5)
+WARNING: Console code page (437) differs from Windows code page (1252)
+         8-bit characters might not work correctly. See psql reference
+         page "Notes for Windows users" for details.
+Type "help" for help.
+
+postgres=# \l
+                                             List of databases
+   Name    |  Owner   | Encoding |        Collate         |         Ctype          |   Access privileges
+-----------+----------+----------+------------------------+------------------------+-----------------------
+ postgres  | postgres | UTF8     | English_Indonesia.1252 | English_Indonesia.1252 |
+ template0 | postgres | UTF8     | English_Indonesia.1252 | English_Indonesia.1252 | =c/postgres          +
+           |          |          |                        |                        | postgres=CTc/postgres
+ template1 | postgres | UTF8     | English_Indonesia.1252 | English_Indonesia.1252 | =c/postgres          +
+           |          |          |                        |                        | postgres=CTc/postgres
+(3 rows)
+
+
+postgres=# create database contoh;
+CREATE DATABASE
+postgres=# \c contoh;
+You are now connected to database "contoh" as user "postgres".
+contoh=# \d
+Did not find any relations.
+contoh=# create table "siswa"("nama" varchar, "umur" int);
+CREATE TABLE
+contoh=# \d
+         List of relations
+ Schema | Name  | Type  |  Owner
+--------+-------+-------+----------
+ public | siswa | table | postgres
+(1 row)
+
+
+contoh=# select * from siswa;
+ nama | umur
+------+------
+(0 rows)
+
+
+contoh=# insert into "siswa" values('ayub', 30);
+INSERT 0 1
+contoh=# select * from siswa;
+ nama | umur
+------+------
+ ayub |   30
+(1 row)
+
+
+contoh=# insert into "siswa" values('alfi', 21);
+INSERT 0 1
+contoh=# select * from siswa;
+ nama | umur
+------+------
+ ayub |   30
+ alfi |   21
+(2 rows)
+
+
+contoh=# insert into "siswa" values('vena', 23);
+INSERT 0 1
+contoh=# select * from siswa;
+ nama | umur
+------+------
+ ayub |   30
+ alfi |   21
+ vena |   23
+(3 rows)
+
+
+contoh=# insert into "siswa" values('titin', 23);
+INSERT 0 1
+contoh=# select * from siswa;
+ nama  | umur
+-------+------
+ ayub  |   30
+ alfi  |   21
+ vena  |   23
+ titin |   23
+(4 rows)
+
+
+contoh=# insert into "siswa" values('fitra', 23);
+INSERT 0 1
+contoh=# select * from siswa;
+ nama  | umur
+-------+------
+ ayub  |   30
+ alfi  |   21
+ vena  |   23
+ titin |   23
+ fitra |   23
+(5 rows)
+
+
+contoh=# insert into "siswa" values('fitra', 23);
