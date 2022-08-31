@@ -2,9 +2,9 @@ try:
     import psycopg2
     conn = psycopg2.connect(
         host="localhost",
-        database="exqs",
+        database="contoh",
         user="postgres",
-        password="tiyanmoe")
+        password="Alfi12345")
 
 except Exception as e:
     print(e)

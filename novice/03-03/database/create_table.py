@@ -45,7 +45,7 @@ def create_tables():
         host="localhost",
         database="suppliers",
         user="postgres",
-        password="tiyanmoe")
+        password="Alfi12345")
         
         #create a cursor
         cur = conn.cursor()
