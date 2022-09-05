@@ -77,15 +77,19 @@ def update(buah_id):
         host="localhost",
         database="contoh",
         user="postgres",
-        password="Alfi12345")
-
+        password="Alfi12345"
+    )
     curs = conn.cursor()
-    query = f"update from buah where id = {buah_id}"
+    
+    namaLama = 'apel'
+    namaBaru = 'alpukat'
+    detailBaru = 'sepet'
+
+    query = f"update buah set nama='{namaBaru}', detail='{detailBaru}' where nama ='{namaLama}'"
     curs.execute(query)
     conn.commit()
-    curs.close()
-    conn.close()
-    
+    print("data masuk")
+
     return redirect("/")    
             
         
