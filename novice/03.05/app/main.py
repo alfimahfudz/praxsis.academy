@@ -70,6 +70,23 @@ def delete(buah_id):
     conn.close()
     
     return redirect("/")
+
+@app.route("/update/<buah_id>")
+def update(buah_id):
+    conn = psycopg2.connect(
+        host="localhost",
+        database="contoh",
+        user="postgres",
+        password="Alfi12345")
+
+    curs = conn.cursor()
+    query = f"update from buah where id = {buah_id}"
+    curs.execute(query)
+    conn.commit()
+    curs.close()
+    conn.close()
+    
+    return redirect("/")    
             
         
 
