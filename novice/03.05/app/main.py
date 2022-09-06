@@ -1,9 +1,12 @@
 # from crypt import methods
-from ast import Delete
-from flask import Flask, render_template
+# from ast import Delete, If
+# from crypt import methods
+from flask import Flask
+from flask import render_template 
 from flask import request
 from flask import redirect
 import psycopg2 
+
 app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
@@ -71,7 +74,7 @@ def delete(buah_id):
     
     return redirect("/")
 
-@app.route("/update/<buah_id>")
+@app.route("/update/<buah_id>", methods=["GET", "POST"])
 def update(buah_id):
     conn = psycopg2.connect(
         host="localhost",
@@ -80,18 +83,29 @@ def update(buah_id):
         password="Alfi12345"
     )
     curs = conn.cursor()
+    if request.method == "POST":
+        nama = request.form.get("nama")
+        detail = request.form.get("detail")
+
     
-    namaLama = 'pare'
-    namaBaru = 'nanas'
-    detailBaru = 'syegar'
+    # namaLama = 'pare'
+    # namaBaru = 'nanas'
+    # detailBaru = 'syegar'
 
-    query = f"update buah set nama='{namaBaru}', detail='{detailBaru}' where nama ='{namaLama}'"
+        query = f"update buah set nama = '{nama}', detail = '{detail}' where id = {buah_id}" 
+        curs.execute(query)
+        conn.commit()
+        # print("data masuk")
+        return redirect("/")   
+
+    query = f"select * from buah where id = {buah_id}"
     curs.execute(query)
-    conn.commit()
-    print("data masuk")
+    data = curs.fetchone()
+    curs.close()
+    conn.close()
+    return render_template("update.html", context=data)
 
-    return redirect("/")   
 
-
+    
 if __name__ =="__main__":    
-app.run()
+    app.run()
