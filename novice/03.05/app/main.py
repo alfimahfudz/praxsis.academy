@@ -81,18 +81,17 @@ def update(buah_id):
     )
     curs = conn.cursor()
     
-    namaLama = 'apel'
-    namaBaru = 'alpukat'
-    detailBaru = 'sepet'
+    namaLama = 'pare'
+    namaBaru = 'nanas'
+    detailBaru = 'syegar'
 
     query = f"update buah set nama='{namaBaru}', detail='{detailBaru}' where nama ='{namaLama}'"
     curs.execute(query)
     conn.commit()
     print("data masuk")
 
-    return redirect("/")    
-            
-        
+    return redirect("/")   
+
 
 if __name__ =="__main__":    
-    app.run()
+app.run()
