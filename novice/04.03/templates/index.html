@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+    
+</head> 
+<body>
+    <div>
+        <h1>Tulis sini puisimu</h1>
+        <form action="" method="post">
+            <label for="">judul</label>
+            <input name="judul" type="textarea" required>
+            <label for="">detail</label>
+            <input name="detail" type="textarea" required>
+            <button type="submit">Tambah</button>
+
+        </form>
+        
+        <hr>
+        <h1>kumpulan puisi</h1>
+
+        <table>
+            <tr>
+                <th>id</th>
+                <th>judul</th>
+                <th>detail</th>
+                
+            </tr>
+            {% for d in context %}
+            <tr>
+                <td>{{loop.index}}}</td>
+                <td>{{d[1]}}</td>
+                <td>{{d[2]}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+ </body>
+</html>
+
+    
