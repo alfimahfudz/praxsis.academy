@@ -1,4 +1,3 @@
-from crypt import methods
 from app.controllers import buah
 from app import app
 
